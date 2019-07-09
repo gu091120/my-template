@@ -22,8 +22,8 @@ module.exports = {
     },
     output: {
         path: BUILD_PATH,
-        filename: envOutPut("[name].js", "[chunkHash:5].[name].js"),
-        chunkFilename: envOutPut("[name].js", "[chunkHash:5].[id].js"),
+        filename: envOutPut("[name].js", "js/[chunkHash:5].[name].js"),
+        chunkFilename: envOutPut("[name].js", "js/[chunkHash:5].[id].js"),
         publicPath: PUBLIC_PATH
     },
     resolve: {
@@ -84,15 +84,15 @@ module.exports = {
             {
                 test: /\.svg(\?v=\d+\.\d+\.\d+)?$/,
                 include: [APP_PATH],
-                use: ["url-loader?limit=200"]
+                use: ["url-loader?limit=1000"]
             },
             {
                 test: /\.(png|jpg|jpeg|gif)(\?v=\d+\.\d+\.\d+)?$/,
                 include: [APP_PATH],
                 use: [
-                    `url-loader?limit=200&name=${envOutPut(
+                    `url-loader?limit=1000&name=${envOutPut(
                         "[name].[ext]",
-                        "[hash:5].[name].[ext]"
+                        "img/[hash:5].[name].[ext]"
                     )}`
                 ]
             }
@@ -109,8 +109,8 @@ module.exports = {
             }
         }),
         new MiniCssExtractPlugin({
-            filename: envOutPut("[name].css", "[chunkHash:5].[name].css"),
-            chunkFilename: envOutPut("[name].css", "[chunkHash:5].[id].css")
+            filename: envOutPut("[name].css", "css/[chunkHash:5].[name].css"),
+            chunkFilename: envOutPut("[name].css", "css/[chunkHash:5].[id].css")
         }),
         new webpack.ProgressPlugin(),
     ].concat(
