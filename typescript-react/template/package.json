@@ -19,8 +19,10 @@
     "prop-types": "^15.7.2",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
+    {{#if router}}
     "react-router": "^5.0.0",
     "react-router-dom": "^5.0.0",
+    {{/if}}
     {{#if redux}}
     "react-redux": "^7.1.0",
     "redux": "^4.0.2"
@@ -31,8 +33,10 @@
     {{#if redux}}
     "@types/react-redux": "^7.1.1",
     {{/if}}
+    {{#if router}}
     "@types/react-router": "^5.0.1",
     "@types/react-router-dom": "^4.3.3",
+    {{/if}}
     "@babel/cli": "^7.4.4",
     "@babel/core": "^7.4.4",
     "@babel/plugin-transform-runtime": "^7.4.4",
