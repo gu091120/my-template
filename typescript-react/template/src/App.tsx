@@ -19,7 +19,6 @@ import Home from './components/Home';
 class App extends React.Component{
 
   componentDidMount(){
-    console.log(this.props)
   }
   render(){
     return (
