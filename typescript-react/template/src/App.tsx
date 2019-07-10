@@ -23,13 +23,13 @@ class App extends React.Component{
     return (
       <div className="container">
         <Router >
-          <h1 style={{margin:"1rem auto","textAlign": "center"}}>hello world</h1>
-          <img src={require("./assets/react-icon.png")} style={{"display":"block",margin:"0.5rem auto",width:"2rem"}} />
+          <h1 >hello world</h1>
+          <img src={require("./assets/react-icon.png")}  />
           <Route path="/home" component={Home}/>
           <Route path="/about" component={About}/>
-          <div style={{"textAlign":"center"}}>
-            <Link to="/home" style={{margin:"0.5rem"}}>home</Link>
-            <Link to="/about" style={{margin:"0.5rem"}}>about</Link>
+          <div >
+            <Link to="/home" >home</Link>
+            <Link to="/about" >about</Link>
           </div>
         </Router>
       </div>
