@@ -134,13 +134,7 @@ module.exports = {
         inline: true,
         open: true,
         disableHostCheck: true,
-        proxy: {},
-        before:function(app){
-            app.get("/app",(req,res)=>{
-                res.json({name:1})
-               // res.end("hello world111")
-            })
-        }
+        proxy: {}
     },
     optimization: {
         minimizer: [
