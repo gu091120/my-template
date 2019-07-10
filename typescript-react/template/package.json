@@ -19,14 +19,18 @@
     "prop-types": "^15.7.2",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
-    "react-redux": "^7.1.0",
     "react-router": "^5.0.0",
     "react-router-dom": "^5.0.0",
+    {{#if redux}}
+    "react-redux": "^7.1.0",
     "redux": "^4.0.2"
+    {{/if}}
   },
   "devDependencies": {
     "@types/prop-types": "^15.7.1",
+    {{#if redux}}
     "@types/react-redux": "^7.1.1",
+    {{/if}}
     "@types/react-router": "^5.0.1",
     "@types/react-router-dom": "^4.3.3",
     "@babel/cli": "^7.4.4",
