@@ -55,8 +55,8 @@ module.exports ={
           },
     },
     filters: {
-      "/src/reducer/*": "redux",
-      "/src/action/*": "redux",
-      "/src/containers/*": "redux",
+      "src/reducer/*": "redux",
+      "src/action/*": "redux",
+      "src/containers/*": "redux",
     },
 }

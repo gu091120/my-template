@@ -5,7 +5,6 @@ const config = {
         isDev:true,
         assetsSubDirectory: "static",
         assetsPublicPath: "/",
-        proxyTable: {},
         devserver: {
             port: 8080,
             host: "0.0.0.0",
