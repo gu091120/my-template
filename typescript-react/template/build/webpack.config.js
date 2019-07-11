@@ -77,7 +77,7 @@ module.exports = {
                 include: [APP_PATH],
                 use: [
                     `url-loader?limit=1000&name=${util.assetsPath(
-                        "img/[name].[chunkHash:7].[ext]"
+                        "img/[name].[hash:7].[ext]"
                     )}`
                 ]
             }
