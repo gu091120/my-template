@@ -4,11 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "webpack-dev-server  --mode development --hot --inline --cache --colors",
-    "b": "webpack --mode production",
-    "build": "npm run b --production",
-    "test:webpack": "nodemon webpack-dev-server  --mode development --hot --inline --cache --colors"
+    "start": "webpack-dev-server --mode development --hot --inline --cache --colors --config build/webpack.config.js",
+    "b": "webpack --mode production --config build/webpack.config.js",
+    "build": "npm run b --production"
   },
   "author": "",
   "license": "ISC",

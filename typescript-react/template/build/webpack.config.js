@@ -1,33 +1,29 @@
 const path = require("path");
-const ROOT_PATH = path.resolve(__dirname);
-const APP_PATH = path.resolve(ROOT_PATH, "src");
-const BUILD_PATH = path.resolve(ROOT_PATH, "dist");
-const PUBLIC_PATH = "";
-const PORT = process.env.PORT || 3000; //PROT=8900 npm run start 自定义端口号
-const MiniCssExtractPlugin = require("mini-css-extract-plugin");
-const OptimizeCssAssetsPlugin = require("optimize-css-assets-webpack-plugin");
-const HtmlWebpackPlugin = require("html-webpack-plugin");
-const ISDEV = !(process.env.NODE_ENV === "production");
-const ClearWebpackPlugin = require("clean-webpack-plugin");
-const UglifyjsWebpackPlugin = require("uglifyjs-webpack-plugin");
-const webpack = require("webpack");
+const webpack = require("./webpack");
+const MiniCssExtractPlugin = require("./mini-css-extract-plugin");
+const OptimizeCssAssetsPlugin = require("./optimize-css-assets-webpack-plugin");
+const HtmlWebpackPlugin = require("./html-webpack-plugin");
+const ClearWebpackPlugin = require("./clean-webpack-plugin");
+const UglifyjsWebpackPlugin = require("./uglifyjs-webpack-plugin");
 
-function envOutPut(devName, proName) {
-    return ISDEV ? devName : proName;
-}
+const config = require("../config");
+const util = require("./util");
+const ROOT_PATH = path.resolve(__dirname,"../");
+const APP_PATH = path.resolve(ROOT_PATH, "src");
+
 
 module.exports = {
     entry: {
         app: [APP_PATH + "/main.tsx"]
     },
     output: {
-        path: BUILD_PATH,
-        filename: envOutPut("[name].js", "js/[chunkHash:5].[name].js"),
-        chunkFilename: envOutPut("[name].js", "js/[chunkHash:5].[id].js"),
-        publicPath: PUBLIC_PATH
+        path: config.buildPath,
+        filename: util.assetsPath("js/[name].[chunkHash:7].js"),
+        chunkFilename: util.assetsPath("js/[id].[chunkHash:7].js"),
+        publicPath: config.publicPath
     },
     resolve: {
-        extensions: [".ts", ".tsx", ".js", "json", "less", "css", "png"],
+        extensions: [".ts", ".tsx", ".js"],
         alias: {}
     },
     module: {
@@ -39,33 +35,23 @@ module.exports = {
                     {
                         loader: MiniCssExtractPlugin.loader,
                         options: {
-                            hmr: ISDEV,
-                            //reloadAll: true
+                            hmr: config.isDev
                         }
                     },
                     {
                         loader: "css-loader",
                         options: {
-                            sourceMap: ISDEV,
+                            sourceMap: config.isDev,
                             importLoaders: 1
                         }
                     },
                     {
-                        loader: "postcss-loader",
-                        options: {
-                            sourceMap: ISDEV,
-                            ident: "postcss",
-                            plugins: loader => [
-                                require("autoprefixer")({
-                                    browsers: ["iOS >= 8", "Android >= 4"]
-                                })
-                            ]
-                        }
+                        loader: "postcss-loader"
                     },
                     {
                         loader: "less-loader",
                         options: {
-                            sourceMap: ISDEV,
+                            sourceMap: config.isDev,
                             javascriptEnabled: true
                         }
                     }
@@ -90,9 +76,8 @@ module.exports = {
                 test: /\.(png|jpg|jpeg|gif)(\?v=\d+\.\d+\.\d+)?$/,
                 include: [APP_PATH],
                 use: [
-                    `url-loader?limit=1000&name=${envOutPut(
-                        "[name].[ext]",
-                        "img/[hash:5].[name].[ext]"
+                    `url-loader?limit=1000&name=${util.assetsPath(
+                        "img/[name].[chunkHash:7].[ext]"
                     )}`
                 ]
             }
@@ -109,32 +94,25 @@ module.exports = {
             }
         }),
         new MiniCssExtractPlugin({
-            filename: envOutPut("[name].css", "css/[chunkHash:5].[name].css"),
-            chunkFilename: envOutPut("[name].css", "css/[chunkHash:5].[id].css")
+            filename: util.assetsPath("css/[name].[chunkHash:7].css"),
+            chunkFilename: util.assetsPath("css/[id].[chunkHash:7].css")
         }),
-        new webpack.ProgressPlugin(),
+        new webpack.ProgressPlugin()
     ].concat(
-        envOutPut(
-            [],
-            [
-                new OptimizeCssAssetsPlugin({
-                    assetNameRegExp: /\.(css|less)$/g,
-                    //            cssProcessor: require('cssnano'),
-                    //            cssProcessorOptions: { safe: true, discardComments: { removeAll: true } },
-                    canPrint: true
-                }),
-                new ClearWebpackPlugin()
-            ]
-        )
+        config.isDev
+            ? []
+            : [
+                  new OptimizeCssAssetsPlugin({
+                      assetNameRegExp: /\.(css|less)$/g,
+                      canPrint: true
+                  }),
+                  new ClearWebpackPlugin()
+              ]
     ),
     devServer: {
-        port: PORT,
-        host: "0.0.0.0",
         hot: true,
         inline: true,
-        open: true,
-        disableHostCheck: true,
-        proxy: {}
+        ...config.devserver
     },
     optimization: {
         minimizer: [
@@ -189,12 +167,12 @@ module.exports = {
             }
         }
     },
-    devtool: envOutPut("#cheap-module-eval-source-map", false),
+    devtool: config.devtool,
     stats: {
         colors: true
     },
     performance: {
         hints: false
     },
-    cache: ISDEV
+    cache: config.isDev
 };
