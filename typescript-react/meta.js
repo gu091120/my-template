@@ -55,6 +55,8 @@ module.exports ={
           },
     },
     filters: {
-      'tsconfig.json': 'typescript',
+      '/src/reducer/*': "redux",
+      '/src/action/*': "redux",
+      '/src/containers/*': "redux",
     },
 }
