@@ -19,7 +19,7 @@ ul {
   font-weight: normal;
 }
 
-{{#if terminal  "H5"}}
+{{#if_eq terminal "H5"}}
                     //h5
 @ps_width: 375px;
 html {
@@ -118,9 +118,7 @@ em {
 html {
   font-size: 10000vw/@ps_width !important;
 }
-{{else}}
+{{/if_eq}}
 
 //PC
-
-{{/if}}
 

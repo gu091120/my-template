@@ -6,14 +6,15 @@ module.exports = {
     plugins: [
         require("autoprefixer")({
             browsers: [
-              {{#if terminal  "H5"}}
+              {{#if_eq terminal  "H5"}}
               "iOS >= 8",
               "Android >= 4",
-              {{else}}
+              {{/if_eq}}
+              {{#if_eq terminal  "PC"}}
               "last 2 versions",
               "> 1%",
               "ie >= 9"
-              {{/if}}
+              {{/if_eq}}
             ]
         })
     ]
