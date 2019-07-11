@@ -4,9 +4,16 @@
             "@babel/preset-env",
             {
                 "targets": {
-                    "ios":"8",
-                    "android":"4",
-                    "ie":"9"
+                  browsers: [
+                      {{#if terminal  "H5"}}
+                      "iOS >= 8",
+                      "Android >= 4",
+                      {{else}}
+                      "last 2 versions",
+                      "> 1%",
+                      "ie >= 9"
+                      {{/if}}
+                  ]
                 },
                 "loose":false,
                 "modules":false,

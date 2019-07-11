@@ -5,7 +5,16 @@ module.exports = {
     sourceMap: config.isDev,
     plugins: [
         require("autoprefixer")({
-            browsers: ["iOS >= 8", "Android >= 4"]
+            browsers: [
+              {{#if terminal  "H5"}}
+              "iOS >= 8",
+              "Android >= 4",
+              {{else}}
+              "last 2 versions",
+              "> 1%",
+              "ie >= 9"
+              {{/if}}
+            ]
         })
     ]
 };
