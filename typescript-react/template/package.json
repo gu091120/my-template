@@ -15,16 +15,16 @@
     "@babel/runtime-corejs2": "^7.4.4",
     "mocker-api": "^1.7.6",
     "prop-types": "^15.7.2",
-    "react": "^16.8.6",
-    "react-dom": "^16.8.6",
     {{#if router}}
     "react-router": "^5.0.0",
     "react-router-dom": "^5.0.0",
     {{/if}}
     {{#if redux}}
     "react-redux": "^7.1.0",
-    "redux": "^4.0.2"
+    "redux": "^4.0.2",
     {{/if}}
+    "react": "^16.8.6",
+    "react-dom": "^16.8.6"
   },
   "devDependencies": {
     "@types/prop-types": "^15.7.1",
