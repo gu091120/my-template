@@ -1,7 +1,7 @@
 const merge = require("webpack-merge")
 const webpackBaseConfig = require("./webpack.base.config")
 const config = require("../config")
-const util = require("./util")
+const util = require("../../../build/util")
 
 let devserverPort = process.env.PORT || config.devserverPort
 

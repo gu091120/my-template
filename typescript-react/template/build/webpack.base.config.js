@@ -5,7 +5,7 @@ const HtmlWebpackPlugin = require("html-webpack-plugin")
 const ForkTsCheckerWebpackPlugin = require("fork-ts-checker-webpack-plugin")
 
 const config = require("../config")
-const util = require("./util")
+const util = require("../../../build/util")
 const ROOT_PATH = path.resolve(__dirname, "../")
 const APP_PATH = path.resolve(ROOT_PATH, "src")
 

@@ -1,6 +1,6 @@
 
 const path = require("path")
-const config = require("../config/index")
+const config = require("../../easy_create_app/typescript-project/config/index")
 const portfinder = require("portfinder")
 
 
