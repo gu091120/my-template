@@ -4,8 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "webpack-dev-server --mode development --hot --inline --cache --colors --config build/webpack.config.js",
-    "b": "webpack --mode production --config build/webpack.config.js",
+    "start": "webpack-dev-server --config build/webpack.dev.config.js",
+    "b": "webpack  --config build/webpack.pro.config.js  ",
     "build": "npm run b --production"
   },
   "author": "",
@@ -62,5 +62,16 @@
     "webpack": "^4.31.0",
     "webpack-cli": "^3.3.2",
     "webpack-dev-server": "^3.3.1"
-  }
+  },
+  "browserslist": [
+    {{#if_eq terminal "H5"}}
+    "iOS >= 8",
+    "Android >= 4",
+    {{/if_eq}}
+    {{#if_eq terminal "PC"}}
+    "last 2 versions",
+    "> 1%",
+    "ie >= 9"
+    {{/if_eq}}
+  ]
 }
