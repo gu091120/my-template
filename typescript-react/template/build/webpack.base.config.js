@@ -1,11 +1,10 @@
 const path = require("path")
-const webpack = require("webpack")
 const MiniCssExtractPlugin = require("mini-css-extract-plugin")
 const HtmlWebpackPlugin = require("html-webpack-plugin")
 const ForkTsCheckerWebpackPlugin = require("fork-ts-checker-webpack-plugin")
 
 const config = require("../config")
-const util = require("../../../build/util")
+const util = require("./util")
 const ROOT_PATH = path.resolve(__dirname, "../")
 const APP_PATH = path.resolve(ROOT_PATH, "src")
 
