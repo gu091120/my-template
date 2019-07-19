@@ -67,7 +67,7 @@
   "browserslist": [
     {{#if_eq terminal "H5"}}
     "iOS >= 8",
-    "Android >= 4",
+    "Android >= 4"
     {{/if_eq}}
     {{#if_eq terminal "PC"}}
     "last 2 versions",
