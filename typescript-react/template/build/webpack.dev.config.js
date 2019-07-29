@@ -8,8 +8,13 @@ let devserverPort = process.env.PORT || config.devserverPort
 const webpackConfig = merge(webpackBaseConfig, {
     mode: "development",
     devServer: {
-        hot: true,
-        inline: true
+      hot: true,
+      inline: true,
+      useLocalIp: true,
+      historyApiFallback: true,
+      disableHostCheck: true,
+      host: "0.0.0.0",
+      proxy:config.devserverProxy
     }
 })
 

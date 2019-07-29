@@ -3,7 +3,7 @@ const OptimizeCssAssetsPlugin = require("optimize-css-assets-webpack-plugin")
 const ClearWebpackPlugin = require("clean-webpack-plugin")
 const UglifyjsWebpackPlugin = require("uglifyjs-webpack-plugin")
 const webpackBaseConfig = require("./webpack.base.config")
-
+const config = require("../config")
 
 module.exports = merge(webpackBaseConfig, {
     mode: "production",
@@ -12,7 +12,9 @@ module.exports = merge(webpackBaseConfig, {
             assetNameRegExp: /\.(css|less)$/g,
             canPrint: true
         }),
-        new ClearWebpackPlugin()
+        new ClearWebpackPlugin([config.buildPath],{
+          root: "/",
+        })
     ],
     optimization: {
         minimizer: [
