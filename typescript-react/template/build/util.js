@@ -5,11 +5,11 @@ const portfinder = require("portfinder")
 
 
 exports.assetsPath = function(_path){
-    if(config.isDev){
-        _path = _path.replace("chunkHash","hash")
-    }
-
-  return path.join(config.assetsSubDirectory, _path)
+  if(webpackConfig.isDev){
+      _path = _path.replace(".[chunkHash:7]","")
+      _path = _path.replace(".[hash:7]","")
+  }
+  return _path
 }
 
 exports.getPort = function(port){

@@ -14,8 +14,8 @@ module.exports = {
     },
     output: {
         path: config.buildPath,
-        filename: util.assetsPath("js/[name].[chunkHash:7].js"),
-        chunkFilename: util.assetsPath("js/[id].[chunkHash:7].js"),
+        filename: util.assetsPath("[name].[chunkHash:7].js"),
+        chunkFilename: util.assetsPath("[id].[chunkHash:7].js"),
         publicPath: config.publicPath
     },
     resolve: {
@@ -73,7 +73,7 @@ module.exports = {
                 include: [APP_PATH],
                 use: [
                     `url-loader?limit=1000&name=${util.assetsPath(
-                        "img/[name].[hash:7].[ext]"
+                        "[name].[hash:7].[ext]"
                     )}`
                 ]
             }
@@ -89,8 +89,8 @@ module.exports = {
             }
         }),
         new MiniCssExtractPlugin({
-            filename: util.assetsPath("css/[name].[chunkHash:7].css"),
-            chunkFilename: util.assetsPath("css/[id].[chunkHash:7].css")
+            filename: util.assetsPath("[name].[chunkHash:7].css"),
+            chunkFilename: util.assetsPath("[id].[chunkHash:7].css")
         }),
         new ForkTsCheckerWebpackPlugin({
           tsconfig:path.resolve(__dirname,"../tsconfig.json"),

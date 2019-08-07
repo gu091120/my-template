@@ -3,7 +3,6 @@ const path = require("path")
 const config = {
     dev: {
         isDev:true,
-        assetsSubDirectory: "static",
         assetsPublicPath: "/",
         devserverPort:8080,
         devserverProcess: {},
@@ -19,7 +18,6 @@ const config = {
     build: {
         isDev:false,
         buildPath: path.resolve(__dirname, "../dist"),
-        assetsSubDirectory: "static",
         assetsPublicPath: "/",
         /**
          * Source Maps
