@@ -1,8 +1,8 @@
 {
-  "name": "node-server",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "name": {{projectName}},
+  "version": {{version}},
+  "description":{{description}},
+  "main": "lib/app.js",
   "scripts": {
     "start:test":"pm2 start ecosystem.config.js --env test",
     "start:pro":"pm2 start ecosystem.config.js",
@@ -11,7 +11,7 @@
     "build": "babel src --out-dir lib",
     "start": "nodemon --exec babel-node  -- src/app.js"
   },
-  "author": "",
+  "author": {{author}},
   "license": "ISC",
   "devDependencies": {
     "@babel/cli": "^7.4.4",

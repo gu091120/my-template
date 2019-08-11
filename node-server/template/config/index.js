@@ -1,5 +1,5 @@
 module.exports={
-    SERVER_NAME:"mykoaserver",
+    SERVER_NAME:{{projectName}},
     PROT:8080,
     ENV_DEV:{
         NODE_ENV: "development",

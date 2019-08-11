@@ -1,14 +1,14 @@
 {
-  "name": "rechargecashbill",
-  "version": "1.0.0",
-  "description": "",
+  "name":{{projectName}},
+  "version": {{version}},
+  "description": {{description}},
   "main": "index.js",
   "scripts": {
     "start": "webpack-dev-server --config build/webpack.dev.config.js",
     "b": "webpack  --config build/webpack.pro.config.js  ",
     "build": "npm run b --production"
   },
-  "author": "",
+  "author": {{author}},
   "license": "ISC",
   "dependencies": {
     "@babel/runtime": "^7.4.4",
