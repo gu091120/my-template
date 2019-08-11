@@ -1,8 +1,22 @@
+import Koa from "koa"
+import Router from "koa-router"
+import { PROT } from "../config"
+import { errorControl, routerInit } from "./util"
+import controller from "./controller"
 
-import path from "path"
-var a = new Set()
-var sym = Symbol();
-const cc  =  ()=>{
-    return [...[12,3],...[1,3]]
-}
-a.add(2)
+const app = new Koa()
+const router = new Router()
+
+router.use("/api", routerInit, controller.routes(), controller.allowedMethods())
+
+router.get("/list", async (ctx, next) => {
+    ctx.body = "from list infor"
+    await next()
+})
+
+app.use(errorControl)
+    .use(router.routes())
+    .use(router.allowedMethods())
+    .listen(PROT, () => {
+        console.log("server is running,port:%d",PROT)
+    })

@@ -4,21 +4,51 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "babel src --out-dir dist"
+    "start_test":"pm2 start ecosystem.config.js --env test",
+    "start_pro":"pm2 start ecosystem.config.js",
+    "build": "babel src --out-dir lib",
+    "start": "nodemon --exec babel-node  -- src/app.js"
   },
   "author": "",
   "license": "ISC",
   "devDependencies": {
     "@babel/cli": "^7.4.4",
     "@babel/core": "^7.5.5",
+    "@babel/node": "^7.5.5",
     "@babel/plugin-proposal-function-bind": "^7.2.0",
     "@babel/plugin-transform-runtime": "^7.5.5",
     "@babel/preset-env": "^7.5.5",
     "@babel/preset-stage-0": "^7.0.0",
-    "@babel/runtime-corejs2": "^7.4.4"
+    "@babel/runtime-corejs2": "^7.4.4",
+    "nodemon": "^1.19.1"
   },
   "dependencies": {
-    "core-js": "^2.6.9"
+    "axios": "^0.19.0",
+    "core-js": "^2.6.9",
+    "koa": "^2.7.0",
+    "koa-body": "^4.1.0",
+    "koa-logger": "^3.2.1",
+    "koa-router": "^7.4.0",
+    "qs": "^6.7.0"
+  },
+  "prettier": {
+    "arrowParens": "avoid",
+    "bracketSpacing": true,
+    "disableLanguages": [
+      "vue"
+    ],
+    "eslintIntegration": false,
+    "ignorePath": ".prettierignore",
+    "jsxBracketSameLine": false,
+    "parser": "babel-flow",
+    "printWidth": 120,
+    "proseWrap": "preserve",
+    "requireConfig": false,
+    "semi": false,
+    "singleQuote": false,
+    "stylelintIntegration": false,
+    "tabWidth": 4,
+    "trailingComma": "none",
+    "useTabs": false
   }
 }
