@@ -4,8 +4,10 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start_test":"pm2 start ecosystem.config.js --env test",
-    "start_pro":"pm2 start ecosystem.config.js",
+    "start:test":"pm2 start ecosystem.config.js --env test",
+    "start:pro":"pm2 start ecosystem.config.js",
+    "stop:test":"pm2 stop ecosystem.config.js --env test",
+    "stop:pro":"pm2 stop ecosystem.config.js --env",
     "build": "babel src --out-dir lib",
     "start": "nodemon --exec babel-node  -- src/app.js"
   },

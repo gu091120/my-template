@@ -14,22 +14,23 @@ SERVER_NAME="mySever"
 
 PIDS=$(ps -ef | grep $SCRIPTPATH | grep -v grep | awk '{print $2}')
 
-if [ -n "$PIDS" ]; then
-    echo "ERROR: server $SERVER_NAME already started!"
+if [ -z "$PIDS" ]; then
+    echo "ERROR: server $SERVER_NAME already stoped!"
     echo "PIDS: $PIDS"
     exit 1
 fi
 
 cd $LOCAL_HOME
 
-npm run start:test >>$LOG_PATH
+npm run stop:pro >>$LOG_PATH
+
 NUM=0
 while :; do
     echo -e ".\c"
     sleep 1
     let NUM++
     PIDS=$(ps -ef | grep $SCRIPTPATH | grep -v grep | awk '{print $2}')
-    if [ -n "$PIDS" ]; then
+    if [ -z "$PIDS" ]; then
         echo "Start $SERVER_NAME ok" >>$LOG_PATH
         echo "Start $SERVER_NAME ok"
         break

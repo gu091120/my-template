@@ -22,7 +22,8 @@ fi
 
 cd $LOCAL_HOME
 
-npm run start:test >>$LOG_PATH
+npm run start:pro >>$LOG_PATH
+
 NUM=0
 while :; do
     echo -e ".\c"
