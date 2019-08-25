@@ -1,0 +1,65 @@
+{
+    "name":{{projectName}},
+    "version": {{version}},
+    "description": {{description}},
+    "author": {{author}},
+    "license": "MIT",
+    "scripts": {
+        "dev": "parcel ./src/index.html",
+        "build": "npm run clear && parcel build ./src/main.tsx --no-minify  --out-dir lib --public-url ./",
+        "clear":"rm -rf lib dist",
+    },
+    "devDependencies": {
+        "@types/node": "^12.7.2",
+        "@types/react": "^16.9.2",
+        "@types/react-dom": "^16.9.0",
+        "autoprefixer": "^9.6.1",
+        "less": "^3.10.3",
+        "parcel-bundler": "^1.12.3",
+        "typescript": "^3.5.3"
+    },
+    "dependencies": {
+        "react": "^16.9.0",
+        "react-dom": "^16.9.0"
+    },
+    "browserslist": [
+        {{#if_eq terminal "Common"}}
+        "last 2 versions",
+        "Firefox ESR",
+        "> 1%",
+        "ie >= 9",
+        "iOS >= 8",
+        "Android >= 4"
+        {{/if_eq}}
+        {{#if_eq terminal "H5"}}
+        "iOS >= 8",
+        "Android >= 4"
+        {{/if_eq}}
+        {{#if_eq terminal "PC"}}
+        "last 2 versions",
+        "> 1%",
+        "ie >= 9"
+        {{/if_eq}}
+    ],
+    "prettier": {
+        "arrowParens": "avoid",
+        "bracketSpacing": true,
+        "disableLanguages": [
+            "vue"
+        ],
+        "eslintIntegration": true,
+        "ignorePath": ".prettierignore",
+        "jsxBracketSameLine": false,
+        "parser": "typescript",
+        "printWidth": 100,
+        "proseWrap": "preserve",
+        "requireConfig": false,
+        "semi": true,
+        "singleQuote": false,
+        "stylelintIntegration": false,
+        "tabWidth": 4,
+        "trailingComma": "none",
+        "useTabs": false
+    }
+    
+}
